@@ -1,22 +1,42 @@
-#main game loop
-def main():
-
-    print("You lift your head off your keyboard and realize you're still at work. Welcome to a day in the life of a nurse.")
-    
-    #the game options will always start here
-    def starting_screen():
-        init_input = input("Do you dare continue? If you would like to play, type 'yes'. Type 'no' to end the game: ")
-        if init_input.lower() == "yes":
-            scenario_1()
-        elif init_input.lower() == "no":
-            print("Game Over")
+#helps run_scene choose whether to run next scenario, give win, or give loss
+def win_lose(scn, option):
+    if type(option) == list:
+        run_scene(option)
+    elif type(option) == tuple:
+        print(option[0])
+        if option[1] == "lose":
+            game_over_screen()
         else:
-            print("\nThere was an error. Please try again and check your spelling.")
-            starting_screen()
+            game_win_screen()
 
-    starting_screen()
+#given a list with scenario options, will exit, take the user to the next scenario, or display an error
+def run_scene(scenario):
+    print(scenario[0])
+    user_input = input(scenario[1])
+    user_input = (user_input.strip()).lower()
+    if user_input == "x":
+        exit()
+    elif user_input in scenario[2]:
+        win_lose(scenario, scenario[2][user_input])
+    else:
+        print("\nThere was an error. Please try again and check your spelling.")
+        run_scene(scenario)
+
+#displays the initial messages of the game to determine if the user wants to play the game or not
+def starting_screen():
+    print("You lift your head off your keyboard and realize you're still at work. Welcome to a day in the life of a nurse.")
+    init_input = input("Do you dare continue? If you would like to play, type 'yes'. Type 'no' to end the game: ")
+    if init_input.lower() == "yes":
+        pass
+    elif init_input.lower() == "no":
+        print("Game Over")
+        exit()
+    else:
+        print("\nThere was an error. Please try again and check your spelling.")
+        starting_screen()
+
             
-#this is the screen that the player goes to when they lose the game
+#displays a losing game message and asks if they want to play again
 def game_over_screen():
     print("""\n
     {{{{{}  {{{{{}  {}  {}  {{{{{}    {{{{{}  {}  {}  {{{{{}  {{{{{}
@@ -25,22 +45,19 @@ def game_over_screen():
     {}  {}  {}  {}  {}  {}  {}        {}  {}   {}{}   {}      {}  {}
     {{{{{}  {}  {}  {}  {}  {{{{{}    {{{{{}    {}    {{{{{}  {}  {}
    \n """)
-    user_input = input("Would you like to play again? If so, type 'yes'. If not, type 'no'. If you have already lost several times and you would like a cheat code, type 'cheat'. If you want to know the correct series of answers, type 'answers': ")
+    user_input = input("Would you like to play again? If so, type 'yes'. If not, type 'no'. If you have already lost several times and you would like know the correct series of answers, type 'answers': ")
     if user_input.lower() == "yes":
-        scenario_1()
+        main()
     elif user_input.lower() == "no":
         print("Thanks for playing!")
-    elif user_input.lower() == "cheat":
-        print("\nTo use the cheat code, type 'run away' in the first scene when you hear a yell down the hallway.")
-        scenario_1()
     elif user_input.lower() == "answers":
-        print("\nThe answers in order are: 'wait', 'stay', 'run', 'away', 'ball'. If you type these answers in this order, you should win the game.")
-        scenario_1()
+        print("\nThe answers in order are: 'wait', 'stay', 'run', 'away', 'ball'. If you type these answers in this order, you should win the game.\n")
+        main()
     else:
         print("\nThere was an error. Please try again and check your spelling.")
         game_over_screen()
 
-#this is the screen that the player goes to when they win the game
+#displays the winning message
 def game_win_screen():
     print("\nCongratulations. You won! You successfully completed the day as a nurse.")
     print("""
@@ -59,105 +76,47 @@ def game_win_screen():
   """)
     user_input = input("Would you like to play again? If so, type 'yes'. If not, type 'no': ")
     if user_input.lower() == "yes":
-        scenario_1()
+        main()
     else:
         print("Game Over")
-
-#scenario 1 leads to scenario 2 with "wait" option, to scenario 3 with "investigate" option, or to a secret win by typing "run away"
-def scenario_1():
-    print("\nWhen you lift your head off the keyboard, you hear a scream down the hallway. What do you do?")
-    user_input = input("Type 'wait' if you want to wait to see what happens. Type 'investigate' to go investigate the noise: ")
-    if user_input.lower() == "wait":
-        scenario_2()
-    elif user_input.lower() == "investigate":
-        scenario_3()
-    #this next line is a cheat code to automatically win the game.
-    elif user_input.lower() == "run away":
-        game_win_screen()
-    else:
-        print("\nThere was an error. Please try again and check your spelling.")
-        scenario_1()
-
-#scenario 2 leads to a loss for "help" option or to scenario 4 with "stay" option
-def scenario_2():
-    print("\nA naked man runs out of the room where you heard the screaming. There is blood running down his neck and a wild look in his eyes. What do you do?")
-    user_input = input("Type 'help' if you want to go help the naked man. Type 'stay' if you want to stay where you are to see what happens next: ")
-    if user_input.lower() == "help":
-        print("\nWhen you try to stop his neck from bleeding, the man thinks you are trying to choke him and he returns the favor. The other nurses weren't able to help you in time.")
-        game_over_screen()
-    elif user_input.lower() == "stay":
-        scenario_4()
-    else:
-        print("\nThere was an error. Please try again and check your spelling.")
-        scenario_2()
-
-#each option in scenario 3 leads to a loss
-def scenario_3():
-    print("\nYou run toward the direction of the yelling. A naked, bloody man jumps out of nowhere and grabs you. What do you do?")
-    user_input = input("Type 'get away' to try to get away. Type 'push' to push the man away: ")
-    if user_input.lower() == "get away":
-        print("\nYou try to get away. This sends the man into a rage. He attacks you and you need one week in intensive care.")
-        game_over_screen()
-    elif user_input.lower() == "push":
-        print("\nYou push the man away and he stumbles through a glass door. The manager and security arrive just in time to see this. You're going to jail.")
-        game_over_screen()
-    else:
-        print("\nThere was an error. Please try again and check your spelling.")
-        scenario_3()
+        exit()
         
-#scenario 4 leads to scenario 5 with "run" option or to scenario 6 with "call" option
-def scenario_4():
-    print("\nYou stay where you are to see what happens. You see another nurse go toward the yelling and suddenly, a naked, bloody man jumps out and grabs her. What do you do?")
-    user_input = input("Type 'run' to run over to the other nurse and help her. Type 'call' to call security from the nearest phone: ")
-    if user_input.lower() == "run":
-        scenario_5()
-    elif user_input.lower() == "call":
-        scenario_6()
-    else:
-        print("\nThere was an error. Please try again and check your spelling.")
-        scenario_4()
+#this is the list of scenarios. there are seven in total. they contain a prompt for the scenario, a message that asks what the user wants to do, and a
+#dictionary with the keywords and the results of using those keywords. they are listed in reverse order because
+#they refer to the next scene and the next scene has to exist before being referred to
+scene7 = ["\nAs you run away, the man's last dose of meth kicks in and he is now much faster than you. What do you do?",
+          "Type 'judo' to judo kick. Type 'ball' to curl into a ball on the floor: ",
+          {"judo": ("\nYou successfully land the judo kick and bust the man's jaw. Later in the day you get busted by the feds. You lost your license and are a convicted felon.", "lose"), "ball": ("\nYou curl into a ball on the floor and sustain minimal damage. The naked man is brought to jail. Now that there is extra space on the unit, prepare yourself to get your next patient. At least there's no way the new patient will be as crazy as that last guy, right? ..........", "win")}]
 
-# scenario 5 leads to scenario 7 with "away" option or to game over with "dive" option
-def scenario_5():
-    print("\nYou run over toward the scene and yell at the naked man to get his attention. Now that you have his attention, what do you do?")
-    user_input = input("Type 'away' to run away from the man. Type 'dive' to dive into a nearby medical closet that you see: ")
-    if user_input.lower() == "away":
-        scenario_7()
-    elif user_input.lower() == "dive":
-        print("\nYou dive into a medical closet but a rack of oxygen tanks falls on you and crushes you.")
-        game_over_screen()
-    else:
-        print("\nThere was an error. Please try again and check your spelling.")
-        scenario_5()
+scene6 = ["\nYou call security. Within minutes, ten people are holding the man down in the hallway. What do you do?",
+          "Type 'medicine' to go grab the medicine to sedate the man. Type 'hold' to help hold the man down with the others: ",
+          {"medicine": ("\nYou grab the medicine and give it to the man. In the rush, you had accidentally grabbed a paralytic, causing the man to stop breathing. You are sued for negligence.", "lose"), "hold": ("\nYou hold the man down with the other people while another nurse grabs the medicine. The naked man moves at the last second and the needle goes into your hand on accident. All of the medicine is given. You pass out and need close monitoring in the emergency room for several hours.", "lose")}]
 
-# each option in scenario 6 leads to a loss
-def scenario_6():
-    print("\nYou call security. Within minutes, ten people are holding the man down in the hallway. What do you do?")
-    user_input = input("Type 'medicine' to go grab the medicine to sedate the man. Type 'hold' to help hold the man down with the others: ")
-    if user_input.lower() == "medicine":
-        print("\nYou grab the medicine and give it to the man. In the rush, you had accidentally grabbed a paralytic, causing the man to stop breathing. You are sued for negligence.")
-        game_over_screen()
-    elif user_input.lower() == "hold":
-        print("\nYou hold the man down with the other people while another nurse grabs the medicine. The naked man moves at the last second and the needle goes into your hand on accident. All of the medicine is given. You pass out and need close monitoring in the emergency room for several hours.")
-        game_over_screen()
-    else:
-        print("\nThere was an error. Please try again and check your spelling.")
-        scenario_6()
-    
-# scenario 7 leads to a loss with the "judo" option or scenario 10 with the "ball" option
-def scenario_7():
-    print("\nAs you run away, the man's last dose of meth kicks in and he is now much faster than you. What do you do?")
-    user_input = input("Type 'judo' to judo kick. Type 'ball' to curl into a ball on the floor: ")
-    if user_input.lower() == "judo":
-        print("\nYou successfully land the judo kick and bust the man's jaw. Later in the day you get busted by the feds. You lost your license and are a convicted felon.")
-        game_over_screen()
-    elif user_input.lower() == "ball":
-        print("\nYou curl into a ball on the floor and sustain minimal damage. The naked man is brought to jail. Now that there is extra space on the unit, prepare yourself to get your next patient. At least there's no way the new patient will be as crazy as that last guy, right? ..........")
-        game_win_screen()
-    else:
-        print("\nThere was an error. Please try again and check your spelling.")
-        scenario_7()
-    
+scene5 = ["\nYou run over toward the scene and yell at the naked man to get his attention. Now that you have his attention, what do you do?",
+          "Type 'away' to run away from the man. Type 'dive' to dive into a nearby medical closet that you see: ",
+          {"away": scene7, "dive": ("\nYou dive into a medical closet but a rack of oxygen tanks falls on you and crushes you.", "lose")}]
 
+scene4 = ["\nYou stay where you are to see what happens. You see another nurse go toward the yelling and suddenly, a naked, bloody man jumps out and grabs her. What do you do?",
+          "Type 'run' to run over to the other nurse and help her. Type 'call' to call security from the nearest phone: ",
+          {"run": scene5, "call": scene6}]
+
+scene3 = ["\nYou run toward the direction of the yelling. A naked, bloody man jumps out of nowhere and grabs you. What do you do?",
+          "Type 'get away' to try to get away. Type 'push' to push the man away: ",
+          {"get away":("\nYou try to get away. This sends the man into a rage. He attacks you and you need one week in intensive care.",
+                       "lose"), "push":("\nYou push the man away and he stumbles through a glass door. The manager and security arrive just in time to see this. You're going to jail.", "lose")}]
+
+scene2 = ["\nA naked man runs out of the room where you heard the screaming. There is blood running down his neck and a wild look in his eyes. What do you do?",
+          "Type 'help' if you want to go help the naked man. Type 'stay' if you want to stay where you are to see what happens next: ",
+          {"help":("\nWhen you try to stop his neck from bleeding, the man thinks you are trying to choke him and he returns the favor. The other nurses weren't able to help you in time.", "lose") , "stay": scene4}]
+
+scene1 = ["\nWhen you lift your head off the keyboard, you hear a scream down the hallway. What do you do?",
+              "Type 'wait' if you want to wait to see what happens. Type 'investigate' to go investigate the noise: ",
+              {"wait": scene2, "investigate": scene3}]
+
+#main game loop
+def main():
+    starting_screen()
+    run_scene(scene1)
+           
 if __name__ == "__main__":
     main()
