@@ -21,3 +21,9 @@ The newer version written in February of 2023 is just one of the ways that I fig
 2. Added the if __name__ == "__main__" component at the bottom of the code. This allows automatic starting of the code if it's being run directly.
 3. Abstracted scenarios from the function running the scenarios. The original code constantly repeated several components including printing a message, asking for input, cleaning up the input, and checking which scenario to run afterwards. I removed the repitition and created a function to perform all of these tasks along with a helper function. All of the scenario information was put into 7 different lists.
 4. The game over screen retained the option for getting all of the answers to win but the cheat code phrase was removed. I felt that two different cheats weren't necessary.
+
+### Possible Improvements
+---
+
+1. The code ideally needs re-formatting to keep the lines of codes under 80 columns. This is mainly an issue in the scenario strings, which are long run-on strings. I would likely accomplish this via the multi-line string functionality with python. This uses three quote marks before and after the string. Then the string can be formatted so it doesn't run past the 80th column.
+2. I think that the functionality of the code can be maintained while combining the "message" string and the "user input" string. The two could be combined into one longer string that collects the user input. This would cut some lines of code and would simplify the solution.
