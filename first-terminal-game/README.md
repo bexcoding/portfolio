@@ -11,6 +11,13 @@ This is one of my first programs that I wrote after I learned python. It is writ
 
 I originally wrote the code for this game in May of 2022. This original code is labeled as 'original-game.py' and will remain unchanged from its original form. However, even weeks after writing the program, I learned of better ways of performing some of the tasks within the code. The most obvious example that catches my eye as I look at the original is that I didn't know about 'newline' characters yet. Every time I wanted a new line, I would add a 'print(" ")' statement which could be easily cleaned up by adding '\n' in the given string.
 
+The newer version written in February of 2023 is just one of the ways that I figured that the code could be re-written. This new version is labeled as 'updated-game.py'. Feel free to look at both versions to see how this game changed over time.
+
+
+### Changes
 ---
 
-The newer version written in February of 2023 is just one of the ways that I figured that the code could be re-written. This new version is labeled as 'updated-game.py'. Feel free to look at both versions to see how this game changed over time.
+1. Replaced each instance of 'print(" ")' with "\n". This allows a newline without requiring a line of code because the newline character can be written right into the string.
+2. Added the if __name__ == "__main__" component at the bottom of the code. This allows automatic starting of the code if it's being run directly.
+3. Abstracted scenarios from the function running the scenarios. The original code constantly repeated several components including printing a message, asking for input, cleaning up the input, and checking which scenario to run afterwards. I removed the repitition and created a function to perform all of these tasks along with a helper function. All of the scenario information was put into 7 different lists.
+4. The game over screen retained the option for getting all of the answers to win but the cheat code phrase was removed. I felt that two different cheats weren't necessary.
