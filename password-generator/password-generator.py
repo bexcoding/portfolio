@@ -35,6 +35,9 @@ def create_password(n, password):
     else:
         return create_password(n - 1, random_item() + password)
 
+# string, int, int, int, int -> list of ints
+# given the preliminary password and an accumulator for each group of character
+# type, returns a list that shows how much each category was used
 def pass_checker(password, up, low, num, sym):
     if password == "":
         return [up, low, num, sym]
@@ -47,7 +50,11 @@ def pass_checker(password, up, low, num, sym):
             return pass_checker(password[1:], up, low, num + 1, sym)
         elif password[0] in symbs:
             return pass_checker(password[1:], up, low, num, sym + 1)
-        
+
+# string, list of ints -> string
+# given the preliminary password and a list that shows how many times each
+# category is used, returns the original password if all categories are present
+# or adds any desired character that is missing
 def modify(mod, check_list):
     if check_list[0] == 0:
         mod += random.choice(uppers)
