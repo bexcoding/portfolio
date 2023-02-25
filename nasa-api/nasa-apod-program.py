@@ -1,8 +1,28 @@
 '''
-communicates with the nasa apod (astronomy picture of the day) api. no input is required.
-the code gets a json response from the api and takes the given url to the image.
-the image is saved in the folder of space photos
+Title: NASA APOD API Program
+Description: Communicates with NASA API for astronomy picture.
+Developer: Alexander Beck
+Email: beckhv2@gmail.com
+Github: https://github.com/bexcoding
+
+\\......//\\......//\\......//\\......//\\......//\\......//\\......//\\......//
+ \\....//  \\....//  \\....//  \\....//  \\....//  \\....//  \\....//  \\....// 
+\ \\..// /\ \\..// /\ \\..// /\ \\..// /\ \\..// /\ \\..// /\ \\..// /\ \\..// /
+ \ \\// /  \ \\// /  \ \\// /  \ \\// /  \ \\// /  \ \\// /  \ \\// /  \ \\// / 
+> | || | <> | || | <> |                                     > | || | <> | || | <  
+> | || | <> | || | <> | ||                          ||   // > | || | <> | || | <
+ /  /\  \  /  /\  \  /  ||                          ||  //   /  /\  \  /  /\  \ 
+/  /  \  \/  /  \  \/   ||____       ___      ___   || //   /  /  \  \/  /  \  \
+  | <> | || | <> | ||   ||    \\   //   \\  //   \\ ||||    | | <> | || | <> | |
+  | <> | || | <> | ||   ||     || ||____|| ||       || \\   | | <> | || | <> | |
+   \  /  ||  \  /  ||   ||     || ||       ||       ||  \\  |  \  /  ||  \  /  | 
+\\  \/  //\\  \/  //\\  ||____//   \\___//  \\___// ||   \\ \\  \/  //\\  \/  //
+.\\    //..\\    //..\\                                      \\    //..\\    //.
+..\\  //....\\  //....\\  //....\\  //....\\  //....\\  //....\\  //....\\  //..
+...\\//......\\//......\\//......\\//......\\//......\\//......\\//......\\//...
+
 '''
+
 import shutil #allows the image to be saved
 import requests #allows http requests to be called to the url
 
