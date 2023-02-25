@@ -1,6 +1,6 @@
-# Password Generator Specification
+# Random Password Generator (RPG) Specification
 
-My goal is to create a password generator written in python. This password generator will have the following specifications:
+My goal is to create a random password generator (RPG) written in python. This password generator will have the following specifications:
 1. Will be written in python.
 2. Will accept an integer from the user to determine the length of the password.
    - The integer will be between 4 and 15 (inclusive, i.e. the password can be 4 characters OR 15 characters OR any whole number between).
@@ -13,3 +13,9 @@ My goal is to create a password generator written in python. This password gener
 4. The final output of the program will be a single string.
 5. No password generated with the program will be saved, remembered, or stored in part or whole after the program is ended.
 6. The password that is generated will follow no discernible pattern appart from meeting length and character type inclusion requirements.
+
+# Versions
+
+| Version              | Comments                                                                                                        |
+| ---                  | ---                                                                                                             |
+|Version 1 (rpg-v1.py) | Written in python; two of the included functions - create_password() and pass_checker() are written recursively |
