@@ -84,7 +84,7 @@ def pass_checker(password, up, low, num, sym):
         elif item in lowers:
             low += 1
         elif item in nums:
-           num += 1
+            num += 1
         elif item in symbs:
             sym += 1
     return [up, low, num, sym]
