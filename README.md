@@ -16,6 +16,6 @@ My name is Alexander Beck and I have created this repository as a way to showcas
 
 Things that I am currently working on include:
 
-- [] Programming Languages, Part B: class on functional programming in a dynamic language, specifically Racket
-- [] portfolio/password-generator:
-     - [] racket
+- [ ] Programming Languages, Part B: class on functional programming in a dynamic language, specifically Racket
+- [ ] portfolio/password-generator:
+     - [ ] racket
