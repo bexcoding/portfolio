@@ -110,7 +110,6 @@ Both version 1 and version 2 are written in python while version 3 is written in
 (define lowers (string->list "abcdefghijklmnopqrstuvwxyz"))
 (define symbols (string->list "!@#$%^&*()[]{}/=?+-_|'`~"))
 (define numbers (string->list "0123456789"))
-(define pass-length 8)
 
 ; list -> list
 ; given an empty list, returns a list of random characters from the four character types
