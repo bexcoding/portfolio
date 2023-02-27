@@ -11,3 +11,11 @@ My name is Alexander Beck and I have created this repository as a way to showcas
 | nasa-api | A program that uses NASA'S APOD (Astronomy Picture of the Day) API to get a new photo of space every day. |
 | password-generator | A program that acts as a basic password generator. |
 | README.md | Contents and description of the portfolio project as a whole. |
+
+# Checklist
+
+Things that I am currently working on include:
+
+- [] Programming Languages, Part B: class on functional programming in a dynamic language, specifically Racket
+- [] portfolio/password-generator:
+     - [] racket
