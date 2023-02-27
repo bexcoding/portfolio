@@ -20,7 +20,7 @@ My goal is to create a random password generator (RPG) written in python. This p
 | --- | --- |
 | Version 1 (rpg-v1.py) | Written in python; two of the included functions - create_password() and pass_checker() are written recursively. |
 | Version 2 (rpg-v2.py) | Identical to version 1 but is written with create_password() and pass_checker() as iterative solutions instead of recursive. |
-| Version 3 (rpg-v3.rkt) | Different implementation using racket. Approach is significantly different from v1 or v2. |
+| Version 3 (rpg-v3.rkt) | Different implementation using racket. Approach is significantly different from v1 or v2. The racket code does not render correctly in GitHub but it can be downloaded by clicking on the Raw tab. |
 
 # Version 1 vs Version 2
 
@@ -102,3 +102,33 @@ Both version 1 and version 2 are written in python while version 3 is written in
 
 1. The first issue I ran into was getting user input. In python, it is relatively simple to get input and assign it to a variable with something like `pass_length = input("Type password length: ")`. This variable could then be passed around the program. In racket, the `(read-line)` function works similarly but I could not get it to appear at the correct segment of the code. The prompt for input would happen at an unexpected portion of the code. Then, when I tried to pair it with a `print` statement to explain what sort of input the user should provide, the `print` statement would happen afterwards. I'm sure there is a simple fix to this problem, but I do not currently have this solution. While I was not able to ask the user how long they wanted their password, it did simplify the code because I did not have to account for user input or the errors that can come along with that.
 2. Given the issues I had at the start with getting the code to match its python counterpart, I decided to remain simple in implementation. I wanted to remove the need for a password generator followed by a password checker like in the first two versions. These original versions could actually produce passwords that were longer than intended. For example, if you wanted a four character password but it only had numbers and symbols, the password checker would add a lowercase and uppercase letter. This would actually make the password six characters long instead of four characters. In my racket version, I removed the password checker and simply added one random character from each list. This assured that the password had an element from each list without the need to be rechecked. Then, I repeated the process again and added the results into a single list of eight characters. I shuffled this and turned the list into a string. This implementation dramatically reduced complexity and the necessary lines of code while ensuring an equally valid random password.
+3. The .rkt filetype does not render appropriately in GitHub. If you click on rpg-v3.rkt, you can look above the file, click on Raw, and this will download a copy that you could view in DrRacket. Otherwise, below you can see the code copied into a text format:
+
+``` racket
+
+(define uppers (string->list "ABCDEFGHIJKLMNOPQRSTUVWXYZ"))
+(define lowers (string->list "abcdefghijklmnopqrstuvwxyz"))
+(define symbols (string->list "!@#$%^&*()[]{}/=?+-_|'`~"))
+(define numbers (string->list "0123456789"))
+(define pass-length 8)
+
+; list -> list
+; given an empty list, returns a list of random characters from the four character types
+(define (base pass-list)
+  (define (list-helper xs ys rand)
+    (append xs (list (list-ref ys rand))))
+  (begin
+    (set! pass-list (list-helper pass-list uppers (random 0 26)))
+    (set! pass-list (list-helper pass-list lowers (random 0 26)))
+    (set! pass-list (list-helper pass-list numbers (random 0 10)))
+    (set! pass-list (list-helper pass-list symbols (random 0 24)))
+    pass-list))
+
+; function -> string
+; given a function that works with lists, returns a shuffled list that is changed to a string
+(define (final f)
+  (list->string (shuffle (append (f null) (f null)))))
+
+(final base)
+
+```
