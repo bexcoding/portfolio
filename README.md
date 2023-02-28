@@ -16,9 +16,14 @@ My name is Alexander Beck and I have created this repository as a way to showcas
 
 Things that I am currently working on, sorted with most recent tasks at the top and with completed tasks at the bottom:
 
-- [ ] portfolio/password-generator:
-     - [X] rpg-v3.rkt: creating version of password generator written in Racket
-     - [ ] README: updating information about versions and how they are different
-     - [X] rpg-v4.js: create version of password generator written in JavaScript
+### Current
+
 - [ ] Programming Languages, Part B: class on functional programming in a dynamic language, specifically Racket
 - [ ] Personal Website: building a [personal website](https://sites.google.com/view/alexandercbeck/home) for future employers to learn more about me
+
+### Completed
+
+- [X] portfolio/password-generator:
+     - [X] rpg-v3.rkt: creating version of password generator written in Racket
+     - [X] README: updating information about versions and how they are different
+     - [X] rpg-v4.js: create version of password generator written in JavaScript
