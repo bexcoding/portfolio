@@ -19,5 +19,6 @@ Things that I am currently working on, sorted with most recent tasks at the top 
 - [ ] portfolio/password-generator:
      - [X] rpg-v3.rkt: creating version of password generator written in Racket
      - [ ] README: updating information about versions and how they are different
+     - [X] rpg-v4.js: create version of password generator written in JavaScript
 - [ ] Programming Languages, Part B: class on functional programming in a dynamic language, specifically Racket
 - [ ] Personal Website: building a [personal website](https://sites.google.com/view/alexandercbeck/home) for future employers to learn more about me
