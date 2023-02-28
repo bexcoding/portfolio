@@ -149,7 +149,7 @@ const types = new Map([
 
 ```
 
-By creating this link, I was able to refer to the different character strings by the number 0, 1, 2, or 3. As I was generating random characters, I would increment my reference to these strings and I would apply my random number to each list in turn. This allowed me to be certain that any password of four or more characters has at least on of each character type without the need to check after the fact.
+By creating this link, I was able to refer to the different character strings by the number 0, 1, 2, or 3. After generating a random character, the reference to the character strings was incremented and a random number would be applied to each character string in turn. This allowed me to be certain that any password of four or more characters has at least on of each character type without the need to check after the fact.
 
 ``` javascript
 
@@ -172,4 +172,4 @@ const generatePassword = (len) => {
 
 ```
 
-The only extra requirement is to shuffle the list of characters after they have been generated to make sure that they do not form a pattern. The downside of this approach is that if a hacker knew the length n of the password, they could tell that n/4 elements were of each type of character. However, given that you couldn't determine the location of the elements, it should not present a security threat. 
+The only extra requirement was to shuffle the list of characters after they had been generated to make sure that they did not form a pattern. The downside of this approach is that if a hacker knew the length n of the password, they could tell that n/4 elements were of each type of character. However, given that you couldn't determine the location of the elements because of shuffling, it should not present a security threat. 
