@@ -21,6 +21,7 @@ My goal is to create a random password generator (RPG) written in python. This p
 | Version 1 (rpg-v1.py) | Written in python; two of the included functions - create_password() and pass_checker() are written recursively. |
 | Version 2 (rpg-v2.py) | Identical to version 1 but is written with create_password() and pass_checker() as iterative solutions instead of recursive. |
 | Version 3 (rpg-v3.rkt) | Different implementation using racket. Approach is significantly different from v1 or v2. The racket code does not render correctly in GitHub but it can be downloaded by clicking on the Raw tab. |
+| Version 4 (rpg-v4.js) | A version written in JavaScript. Has similar implementation to the racket version but also has unique style. |
 
 # Version 1 vs Version 2
 
@@ -131,3 +132,44 @@ Both version 1 and version 2 are written in python while version 3 is written in
 (final base)
 
 ```
+
+# Version 4
+
+Version 4 is written in JavaScript and has a similar style to version 3. I could not get user input to work so I had to set the password to a fixed length of 8 characters. Like v3, this allowed me to skip creating a function to accept user input. When I was researching built-in functions, I couldn't find a functions that did what I wanted for two components: truly randomizing a list and changing a list to a string. Because of this, I had to create my own way of converting a list to a string, which took up more space. For the shuffle algorithm, I used the Fisher-Yates algorithm which is supposed to be a way of truly randomizing a list. This algorithm was written long ago, so I borrowed the common implementation and stored it under the function name `shuffle`.
+One component that sets this version apart from the rest was the use of the `map` concept, which is similar to a Python dictionary.
+
+``` javascript
+
+const types = new Map([
+    [0, uppers],
+    [1, lowers],
+    [2, symbols],
+    [3, numbers]
+])
+
+```
+
+By creating this link, I was able to refer to the different character strings by the number 0, 1, 2, or 3. As I was generating random characters, I would increment my reference to these strings and I would apply my random number to each list in turn. This allowed me to be certain that any password of four or more characters has at least on of each character type without the need to check after the fact.
+
+``` javascript
+
+const generatePassword = (len) => {
+    let n = 0 // n allows function to loop through types map
+    let tempStr = ""
+    let tempChar = ""
+    let passList = []
+    while (len > 0) {
+	if (n > 3) {
+	    n = 0
+	}
+	tempStr = types.get(n)
+	tempChar = tempStr[Math.floor(Math.random() * tempStr.length)]
+	passList.push(tempChar)
+	n++
+	len--
+    }
+    return passList
+
+```
+
+The only extra requirement is to shuffle the list of characters after they have been generated to make sure that they do not form a pattern. The downside of this approach is that if a hacker knew the length n of the password, they could tell that n/4 elements were of each type of character. However, given that you couldn't determine the location of the elements, it should not present a security threat. 
