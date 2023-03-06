@@ -4,7 +4,7 @@ My name is Alexander Beck and I have created this repository as a way to showcas
 
 # Portfolio Contents
 
-(Sorted alhabetically)
+(Sorted alphabetically)
 | File or Folder | Description |
 | --- | --- |
 | code-signature-template.txt | The template that I use to sign code that I have created. |
