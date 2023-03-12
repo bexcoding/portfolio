@@ -25,7 +25,11 @@ GitHub:
      - [ ] Start folder and readme for ciphers
      - [ ] Create reverse cipher
      - [ ] Create caesar cipher
-     
+
+Books:
+- [ ] Beyond the Basic Stuff with Python by Al Sweigart
+- [ ] Cracking Codes with Python by Al Sweigart
+
 Software:
 - [ ] Learning basics of Doom Emacs
 
