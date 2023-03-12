@@ -25,6 +25,7 @@ Github: https://github.com/bexcoding
 
 import math
 
+
 def check_nurse_quantity(nurses, adv_nurses, h_patients, l_patients):
     """
     int, int, int, int -> tuple (boolean, string)
@@ -84,6 +85,7 @@ def match_nurse_to_patient(nurses, patients):
             {combined_nurses.pop(0): ()})  
     return nurse_assignments
 
+
 def check_then_match(scheduled_nurses, current_patients):
     """
     dict, dict -> dict or print message
@@ -103,3 +105,48 @@ def check_then_match(scheduled_nurses, current_patients):
     else:
         print(f"Error: staff shortage. {result_of_quantity_check[1]}")
         
+        
+def get_nurses():
+    """
+    none -> dict (str:str)
+    prompts user to enter names of scheduled nurse, and returns a dictionary
+    """
+    new_nurse_dict = {}
+    print("""
+Enter the names of the nurses for the next shift and enter 'x' when done
+listing names. After entering the name, type 'a' for advanced nurses and
+'b' for beginners.\n""")
+    temp_name = ""
+    while temp_name != "x":
+        temp_name = input("Who is the next nurse? (type 'x' to quit)\n")
+        if temp_name != "x":
+            temp_skill_level = input(
+                f"What is {temp_name}'s skill level? A or B?\n")
+            new_nurse_dict.update({temp_name: temp_skill_level.upper()})
+    return new_nurse_dict
+            
+            
+def get_patients():
+    """
+    none -> dict (str:str)
+    prompts user to enter names of current patients, and returns a dictionary
+    """
+    new_patient_dict = {}
+    print("""
+Enter the names of the patients that are currently on the unit and enter 'x'
+when done listing names. After entering the name, type 'h' for high acuity
+patients and 'l' for low acuity patients.\n""")
+    temp_patient_name = ""
+    while temp_patient_name != "x":
+        temp_patient_name = input(
+            "Who is the next patient? (type 'x' to quit)\n")
+        if temp_patient_name != "x":
+            temp_acuity_level = input(
+                f"What is {temp_patient_name}'s acuity level? H or L?\n")
+            new_patient_dict.update(
+                {temp_patient_name: temp_acuity_level.upper()})
+    return new_patient_dict
+
+    
+if __name__ == "__main__":
+    check_then_match(get_nurses(), get_patients())
