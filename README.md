@@ -8,6 +8,7 @@ My name is Alexander Beck and I have created this repository as a way to showcas
 | File or Folder | Description |
 | --- | --- |
 | code-signature-template.txt | The template that I use to sign code that I have created. |
+| coding-problems | A collection of coding problems I have written, including the prompt and the solution that I created to solve the prompt. |
 | first-terminal-game | My first terminal game written as a text-based adventure. Includes a revision from a year later to improve the style. Written in python. |
 | nasa-api | A program that uses NASA'S APOD (Astronomy Picture of the Day) API to get a new photo of space every day. |
 | password-generator | A program that acts as a basic password generator. |
@@ -18,7 +19,8 @@ My name is Alexander Beck and I have created this repository as a way to showcas
 Things that I am currently working on, sorted with most recent tasks at the top and with completed tasks at the bottom:
 
 ### Current
-
+- [ ] Starting folder for message ciphers
+- [ ] Creating solution to staffing problem for the coding-problems folder
 - [ ] Learning basics of Doom Emacs
 - [ ] Personal Website: building a [personal website](https://sites.google.com/view/alexandercbeck/home) for future employers to learn more about me
 
