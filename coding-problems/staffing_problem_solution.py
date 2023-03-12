@@ -149,4 +149,4 @@ patients and 'l' for low acuity patients.\n""")
 
     
 if __name__ == "__main__":
-    check_then_match(get_nurses(), get_patients())
+    print(check_then_match(get_nurses(), get_patients()))
