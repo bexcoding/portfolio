@@ -25,8 +25,10 @@ GitHub:
      - [ ] Start folder and readme for ciphers
      - [ ] Create reverse cipher
      - [ ] Create caesar cipher
+     
 Software:
 - [ ] Learning basics of Doom Emacs
+
 Portfolio Website:
 - [ ] Personal Website: building a [personal website](https://sites.google.com/view/alexandercbeck/home) for future employers to learn more about me
 
