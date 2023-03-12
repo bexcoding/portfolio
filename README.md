@@ -31,3 +31,10 @@ Things that I am currently working on, sorted with most recent tasks at the top 
      - [X] rpg-v3.rkt: creating version of password generator written in Racket
      - [X] README: updating information about versions and how they are different
      - [X] rpg-v4.js: create version of password generator written in JavaScript
+
+| Status | Description                                                              | Date Completed |
+|--------|--------------------------------------------------------------------------|----------------|
+| [X]    | **portfolio/password-generator:**                                        | -              |
+| [X]    | - rpg-v3.rkt: creating version of password generator written in Racket   | -              |
+| [X]    | - README: updating information about versions and how they are different | -              |
+| [X]    | - rpg-v4.js: create version of password generator written in JavaScript  | -              |
