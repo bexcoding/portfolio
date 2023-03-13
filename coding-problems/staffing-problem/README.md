@@ -26,6 +26,26 @@ At the end of every 12 hour shift at the hospital, one of the nurses creates an 
     
 # Implementation Notes
 
+### Implementation Diagram
+
+```mermaid
+---
+title: Staffing Problem
+---
+flowchart TD
+  A["get_nurses()"] --> C
+  B["get_patients()"] --> C
+  C["check_then_match()"] --> D
+  D[gets count of A and B nurses\n and H and L patients] --> E
+  E["check_nurse_quantity()"] --> C
+  C --> F
+  F{nurse quantity check = True?} -- yes --> G
+  G["match_nurse_to_patient()"] --> I
+  I[Return dict of nurse assignments]
+  F -- no --> H
+  H[print error message]
+```
+
 ### File Naming
 
 One might notice that both the explanation/prompt file and the test file follow the typical naming convention of GitHub files - "xxx-xxxxx-xxxxxx.filetype". However, my solution file is the only file in my portfolio (at the time of this writing) to have the "xxx_xxxxx_xxxxxx.filetype" format with underscores instead of dashes. This was not a mistake. When writing my tests for this code, I kept trying to import my solution to the test file so that I could use the functions in the tests. It wasn't working and ended up causing some frustration. With a little bit of experimentation, I came to realize that my environment did not want to import a file with dashes instead of underscores. As far as I can tell, python modules like to be named with either underscores or no separating characters but cannot be named using dashes if you want them to actually import. 
