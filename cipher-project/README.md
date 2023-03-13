@@ -25,7 +25,7 @@ def reverse_cipher(message):
     return new_message
 ```
 
-##### Usage
+#### Usage
 
 Here is the message before being inserted into the reverse cipher:
 
@@ -33,13 +33,13 @@ Here is the message before being inserted into the reverse cipher:
 
 Here is the result:
 
-> '.sdrawkcab ylpmis si egassem eht taht yawa-evig daed a si )? ro . ro ! ekil( noitautcnup fo noisulcni eht taht ecitoN .krow ta rehpic esrever eht fo elpmaxe doog a si ereH'
+> ".sdrawkcab ylpmis si egassem eht taht yawa-evig daed a si )? ro . ro ! ekil( noitautcnup fo noisulcni eht taht ecitoN .krow ta rehpic esrever eht fo elpmaxe doog a si ereH"
 
 If you wanted to decrypt that same message, you get the same as the original:
 
 > "Here is a good example of the reverse cipher at work. Notice that the inclusion of punctuation (like ! or . or ?) is a dead give-away that the message is simply backwards."
 
-##### Second Version
+#### Second Version
 
 While the reverse cipher can trick the eyes for a quick moment, I personally think that it is a dead give-away to have either punctuation or capital letters. I decided to create a second version of the reverse cipher called `reverse_without_punctuation()` that drops all punctuation and makes all letters lowercase. This is even harder for the eyes to detect what is going on. Only by going character by character can someone catch a pattern in a unique common word and realize that the message is just backwards. This solution requires `import string` in the file.
 
@@ -56,12 +56,12 @@ def reverse_without_punctuation(message):
 
 Here is the next message before being inserted:
 
-> 'This reverse function removes punctuation and makes sure all characters are lowercase. In my opinion, this makes the cipher less obvious. The side effect is that decrypting the message results in a message without punctuation or spaces. This is harder to read than usual but still doable.'
+> "This reverse function removes punctuation and makes sure all characters are lowercase. In my opinion, this makes the cipher less obvious. The side effect is that decrypting the message results in a message without punctuation or spaces. This is harder to read than usual but still doable."
 
 As you can see, the result of the encryption does not immediately gives itself away and could possibly be interpreted as a series of random characters if not observed closely:
 
-> 'elbaodllitstublausunahtdaerotredrahsisihtsecapsronoitautcnuptuohtiwegassemanistluseregassemehtgnitpyrcedtahtsitceffeedisehtsuoivbosselrehpicehtsekamsihtnoinipoymniesacrewolerasretcarahcllaerussekamdnanoitautcnupsevomernoitcnufesreversiht'
+> "elbaodllitstublausunahtdaerotredrahsisihtsecapsronoitautcnuptuohtiwegassemanistluseregassemehtgnitpyrcedtahtsitceffeedisehtsuoivbosselrehpicehtsekamsihtnoinipoymniesacrewolerasretcarahcllaerussekamdnanoitautcnupsevomernoitcnufesreversiht"
 
 The only problem with this method is that on decryption the message still does not have punctuation. The words run together. While this is an unfortunate side effect, I believe that it is worth the extra chance that someone wouldn't be able to understand the encrypted message:
 
-> 'thisreversefunctionremovespunctuationandmakessureallcharactersarelowercaseinmyopinionthismakesthecipherlessobviousthesideeffectisthatdecryptingthemessageresultsinamessagewithoutpunctuationorspacesthisishardertoreadthanusualbutstilldoable'
+> "thisreversefunctionremovespunctuationandmakessureallcharactersarelowercaseinmyopinionthismakesthecipherlessobviousthesideeffectisthatdecryptingthemessageresultsinamessagewithoutpunctuationorspacesthisishardertoreadthanusualbutstilldoable"
